@@ -1,0 +1,10 @@
+{
+  "name": "openclaw-genpark-outreach-warmer",
+  "version": "1.0.0",
+  "description": "OpenClaw GenPark Outreach Warmer - Sigmoid email ramp-up volume progression, SPF/DKIM/DMARC authentication posture scoring, and sender reputation domain decay modeling.",
+  "tools": [
+    "calculate_sigmoid_rampup_schedule",
+    "validate_email_auth_alignment_records",
+    "estimate_domain_reputation_decay"
+  ]
+}
