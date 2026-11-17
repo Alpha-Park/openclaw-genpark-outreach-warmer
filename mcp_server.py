@@ -8,18 +8,9 @@ import json
 from typing import Dict, Any
 from client import OpenClawGenParkOutreachWarmer
 
-try:
-    from mcp.server.fastmcp import FastMCP
-    mcp = FastMCP("openclaw-genpark-outreach-warmer")
-except ImportError:
-    class MockFastMCP:
-        def __init__(self, name):
-            self.name = name
-        def tool(self):
-            def decorator(f):
-                return f
-            return decorator
-    mcp = MockFastMCP("openclaw-genpark-outreach-warmer")
+from mcp.server.fastmcp import FastMCP
+
+mcp = FastMCP('openclaw-genpark-outreach-warmer')
 
 warmer = OpenClawGenParkOutreachWarmer()
 
@@ -62,8 +53,7 @@ def estimate_domain_reputation_decay(
     return json.dumps(res, indent=2)
 
 def main():
-    print("Testing Outreach Warmer:")
-    print(calculate_sigmoid_rampup_schedule(300, 14))
+    mcp.run(transport="stdio")
 
 if __name__ == "__main__":
     main()
